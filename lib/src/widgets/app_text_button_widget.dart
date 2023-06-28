@@ -1,4 +1,4 @@
-import 'package:basic_code_getx/src/extensions/text_style_extension.dart';
+import 'package:basic_bloc_code/src/extensions/text_style_extension.dart';
 import 'package:flutter/material.dart';
 
 class AppTextButtonWidget extends StatelessWidget {
