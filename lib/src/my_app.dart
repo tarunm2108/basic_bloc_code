@@ -6,7 +6,7 @@ import 'package:basic_bloc_code/src/extensions/space_extension.dart';
 import 'package:basic_bloc_code/src/extensions/string_extension.dart';
 import 'package:basic_bloc_code/src/ui/splash/splash_view.dart';
 import 'package:basic_bloc_code/src/widgets/app_scaffold.dart';
-import 'package:basic_bloc_code/utils/constants.dart';
+import 'package:basic_bloc_code/app_const/constants.dart';
 import 'package:basic_bloc_code/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

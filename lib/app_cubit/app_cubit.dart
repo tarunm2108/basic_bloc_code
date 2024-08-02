@@ -19,11 +19,11 @@ class AppCubit extends Cubit<AppState> {
         (connectivityResult) => emitInternetConnection(connectivityResult));
   }
 
-  void emitInternetConnection(ConnectivityResult connectivityResult) {
-    if (connectivityResult == ConnectivityResult.wifi ||
-        connectivityResult == ConnectivityResult.mobile) {
+  void emitInternetConnection(List<ConnectivityResult> connectivityResult) {
+    if (connectivityResult.contains(ConnectivityResult.wifi) ||
+        connectivityResult.contains(ConnectivityResult.mobile)) {
       emit(AppLoaded(const Locale('en')));
-    } else if (connectivityResult == ConnectivityResult.none) {
+    } else if (connectivityResult.contains(ConnectivityResult.none)) {
       emit(AppNoInternet(const Locale('en')));
     }
   }
