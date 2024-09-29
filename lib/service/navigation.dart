@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NavigationService {
-  static final NavigationService instance = NavigationService._internal();
+class Navigation {
+  static final Navigation instance = Navigation._internal();
 
-  factory NavigationService() => instance;
+  factory Navigation() => instance;
 
-  NavigationService._internal();
+  Navigation._internal();
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
