@@ -1,3 +1,4 @@
+import 'package:basic_bloc_code/utils/logger.dart';
 import 'package:flutter/material.dart' show Locale, LocalizationsDelegate;
 import 'app_localizations.dart';
 
@@ -11,7 +12,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
 
   @override
   Future<AppLocalizations> load(Locale locale) async {
-    print(locale.languageCode);
+    Logger.instance.printLog(locale.languageCode);
     AppLocalizations appLocalizations = AppLocalizations(locale);
     appLocalizations.load();
     return appLocalizations;

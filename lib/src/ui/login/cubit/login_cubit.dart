@@ -2,7 +2,6 @@ import 'package:basic_bloc_code/app_cubit/app_cubit.dart';
 import 'package:basic_bloc_code/app_locale/lang_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localization/flutter_localization.dart';
 
 part 'login_state.dart';
 

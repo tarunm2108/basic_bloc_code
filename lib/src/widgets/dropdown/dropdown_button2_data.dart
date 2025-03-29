@@ -25,31 +25,7 @@ class ButtonStyleData {
   /// The elevation of the Button
   final int? elevation;
 
-  /// Defines the ink response focus, hover, and splash colors.
-  ///
-  /// This default null property can be used as an alternative to
-  /// [focusColor], [hoverColor], [highlightColor], and
-  /// [splashColor]. If non-null, it is resolved against one of
-  /// [MaterialState.focused], [MaterialState.hovered], and
-  /// [MaterialState.pressed]. It's convenient to use when the parent
-  /// widget can pass along its own MaterialStateProperty value for
-  /// the overlay color.
-  ///
-  /// [MaterialState.pressed] triggers a ripple (an ink splash), per
-  /// the current Material Design spec. The [overlayColor] doesn't map
-  /// a state to [highlightColor] because a separate highlight is not
-  /// used by the current design guidelines. See
-  /// https://material.io/design/interaction/states.html#pressed
-  ///
-  /// If the overlay color is null or resolves to null, then [focusColor],
-  /// [hoverColor], [splashColor] and their defaults are used instead.
-  ///
-  /// See also:
-  ///
-  ///  * The Material Design specification for overlay colors and how they
-  ///    match a component's state:
-  ///    <https://material.io/design/interaction/states.html#anatomy>.
-  final MaterialStateProperty<Color?>? overlayColor;
+  final WidgetStateProperty<Color?>? overlayColor;
 }
 
 class IconStyleData {
@@ -177,31 +153,8 @@ class MenuItemStyleData {
   /// The padding of menu items
   final EdgeInsetsGeometry? padding;
 
-  /// Defines the ink response focus, hover, and splash colors.
-  ///
-  /// This default null property can be used as an alternative to
-  /// [focusColor], [hoverColor], [highlightColor], and
-  /// [splashColor]. If non-null, it is resolved against one of
-  /// [MaterialState.focused], [MaterialState.hovered], and
-  /// [MaterialState.pressed]. It's convenient to use when the parent
-  /// widget can pass along its own MaterialStateProperty value for
-  /// the overlay color.
-  ///
-  /// [MaterialState.pressed] triggers a ripple (an ink splash), per
-  /// the current Material Design spec. The [overlayColor] doesn't map
-  /// a state to [highlightColor] because a separate highlight is not
-  /// used by the current design guidelines. See
-  /// https://material.io/design/interaction/states.html#pressed
-  ///
-  /// If the overlay color is null or resolves to null, then [focusColor],
-  /// [hoverColor], [splashColor] and their defaults are used instead.
-  ///
-  /// See also:
-  ///
-  ///  * The Material Design specification for overlay colors and how they
-  ///    match a component's state:
-  ///    <https://material.io/design/interaction/states.html#anatomy>.
-  final MaterialStateProperty<Color?>? overlayColor;
+
+  final WidgetStateProperty<Color?>? overlayColor;
 
   /// A builder to customize the selected menu item.
   ///
