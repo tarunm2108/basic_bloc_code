@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ErrorViewWidget extends StatelessWidget {
-  const ErrorViewWidget({Key? key}) : super(key: key);
+  const ErrorViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

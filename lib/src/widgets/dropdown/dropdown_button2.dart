@@ -1,10 +1,3 @@
-/*
- * Created by AHMED ELSAYED on 30 Nov 2021.
- * email: ahmedelsaayid@gmail.com
- * Edits made on original source code by Flutter.
- * Copyright 2014 The Flutter Authors. All rights reserved.
-*/
-
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -204,15 +197,15 @@ class _DropdownMenuItemButtonState<T>
     // An [InkWell] is added to the item only if it is enabled
     // isNoSelectedItem to avoid first item highlight when no item selected
     if (dropdownMenuItem.enabled) {
-      final _isSelectedItem = !widget.route.isNoSelectedItem &&
+      final isSelectedItem = !widget.route.isNoSelectedItem &&
           widget.itemIndex == widget.route.selectedIndex;
       child = InkWell(
-        autofocus: _isSelectedItem,
+        autofocus: isSelectedItem,
         enableFeedback: widget.enableFeedback,
         onTap: _handleOnTap,
         onFocusChange: _handleFocusChange,
         overlayColor: menuItemStyle.overlayColor,
-        child: _isSelectedItem
+        child: isSelectedItem
             ? menuItemStyle.selectedMenuItemBuilder?.call(context, child) ??
                 child
             : child,
@@ -843,10 +836,9 @@ class _DropdownMenuItemContainer extends StatelessWidget {
   ///
   /// The [child] argument is required.
   const _DropdownMenuItemContainer({
-    Key? key,
     this.alignment = AlignmentDirectional.centerStart,
     required this.child,
-  }) : super(key: key);
+  });
 
   /// The widget below this widget in the tree.
   ///
@@ -875,66 +867,7 @@ class _DropdownMenuItemContainer extends StatelessWidget {
   }
 }
 
-/// A Material Design button for selecting from a list of items.
-///
-/// A dropdown button lets the user select from a number of items. The button
-/// shows the currently selected item as well as an arrow that opens a menu for
-/// selecting another item.
-///
-/// One ancestor must be a [Material] widget and typically this is
-/// provided by the app's [Scaffold].
-///
-/// The type `T` is the type of the [value] that each dropdown item represents.
-/// All the entries in a given menu must represent values with consistent types.
-/// Typically, an enum is used. Each [DropdownMenuItem] in [items] must be
-/// specialized with that same type argument.
-///
-/// The [onChanged] callback should update a state variable that defines the
-/// dropdown's value. It should also call [State.setState] to rebuild the
-/// dropdown with the new value.
-///
-/// {@tool dartpad}
-/// This sample shows a `DropdownButton` with a large arrow icon,
-/// purple text style, and bold purple underline, whose value is one of "One",
-/// "Two", "Free", or "Four".
-///
-/// ![](https://flutter.github.io/assets-for-api-docs/assets/material/dropdown_button.png)
-///
-/// ** See code in examples/api/lib/material/dropdown/dropdown_button.0.dart **
-/// {@end-tool}
-///
-/// If the [onChanged] callback is null or the list of [items] is null
-/// then the dropdown button will be disabled, i.e. its arrow will be
-/// displayed in grey and it will not respond to input. A disabled button
-/// will display the [disabledHint] widget if it is non-null. However, if
-/// [disabledHint] is null and [hint] is non-null, the [hint] widget will
-/// instead be displayed.
-///
-/// Requires one of its ancestors to be a [Material] widget.
-///
-/// See also:
-///
-///  * [DropdownButtonFormField2], which integrates with the [Form] widget.
-///  * [DropdownMenuItem], the class used to represent the [items].
-///  * [DropdownButtonHideUnderline], which prevents its descendant dropdown buttons
-///    from displaying their underlines.
-///  * [ElevatedButton], [TextButton], ordinary buttons that trigger a single action.
-///  * <https://material.io/design/components/menus.html#dropdown-menu>
 class DropdownButton2<T> extends StatefulWidget {
-  /// Creates a DropdownButton2
-  /// It's customizable DropdownButton with steady dropdown menu and many other features.
-  ///
-  /// The [items] must have distinct values. If [value] isn't null then it
-  /// must be equal to one of the [DropdownMenuItem] values. If [items] or
-  /// [onChanged] is null, the button will be disabled, the down arrow
-  /// will be greyed out.
-  ///
-  /// If [value] is null and the button is enabled, [hint] will be displayed
-  /// if it is non-null.
-  ///
-  /// If [value] is null and the button is disabled, [disabledHint] will be displayed
-  /// if it is non-null. If [disabledHint] is null, then [hint] will be displayed
-  /// if it is non-null.
   DropdownButton2({
     super.key,
     required this.items,
@@ -1042,22 +975,6 @@ class DropdownButton2<T> extends StatefulWidget {
   /// displayed in grey and it will not respond to input.
   final List<DropdownMenuItem<T>>? items;
 
-  /// A builder to customize the dropdown buttons corresponding to the
-  /// [DropdownMenuItem]s in [items].
-  ///
-  /// When a [DropdownMenuItem] is selected, the widget that will be displayed
-  /// from the list corresponds to the [DropdownMenuItem] of the same index
-  /// in [items].
-  ///
-  /// {@tool dartpad}
-  /// This sample shows a `DropdownButton` with a button with [Text] that
-  /// corresponds to but is unique from [DropdownMenuItem].
-  ///
-  /// ** See code in examples/api/lib/material/dropdown/dropdown_button.selected_item_builder.0.dart **
-  /// {@end-tool}
-  ///
-  /// If this callback is null, the [DropdownMenuItem] from [items]
-  /// that matches [value] will be displayed.
   final DropdownButtonBuilder? selectedItemBuilder;
 
   /// The value of the currently selected [DropdownMenuItem].
@@ -1085,16 +1002,7 @@ class DropdownButton2<T> extends StatefulWidget {
   /// this widget is displayed as a placeholder for the dropdown button's value.
   final Widget? disabledHint;
 
-  /// {@template flutter.material.dropdownButton.onChanged}
-  /// Called when the user selects an item.
-  ///
-  /// If the [onChanged] callback is null or the list of [DropdownButton2.items]
-  /// is null then the dropdown button will be disabled, i.e. its arrow will be
-  /// displayed in grey and it will not respond to input. A disabled button
-  /// will display the [DropdownButton2.disabledHint] widget if it is non-null.
-  /// If [DropdownButton2.disabledHint] is also null but [DropdownButton2.hint] is
-  /// non-null, [DropdownButton2.hint] will instead be displayed.
-  /// {@endtemplate}
+
   final ValueChanged<T?>? onChanged;
 
   /// Called when the dropdown menu opens or closes.
@@ -1130,11 +1038,7 @@ class DropdownButton2<T> extends StatefulWidget {
   /// its own decorations, like [InputDecorator].
   final bool isDense;
 
-  /// Set the dropdown's inner contents to horizontally fill its parent.
-  ///
-  /// By default this button's inner width is the minimum size of its contents.
-  /// If [isExpanded] is true, the inner width is expanded to fill its
-  /// surrounding container.
+
   final bool isExpanded;
 
   /// {@macro flutter.widgets.Focus.focusNode}
@@ -1324,10 +1228,10 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
   void didChangeMetrics() {
     //This fix the bug of calling didChangeMetrics() on iOS when app starts
     if (_rect.value == null) return;
-    final _newRect = _getRect();
+    final newRect = _getRect();
     //This avoid unnecessary rebuilds if _rect position hasn't changed
-    if (_rect.value!.top == _newRect.top) return;
-    _rect.value = _newRect;
+    if (_rect.value!.top == newRect.top) return;
+    _rect.value = newRect;
   }
 
   TextStyle? get _textStyle =>
@@ -1424,9 +1328,9 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
   // Similarly, we don't reduce the height of the button so much that its icon
   // would be clipped.
   double get _denseButtonHeight {
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
     final double fontSize = _textStyle!.fontSize ??
         Theme.of(context).textTheme.titleMedium!.fontSize!;
+    final double textScaleFactor = MediaQuery.textScalerOf(context).scale(fontSize);
     final double scaledFontSize = textScaleFactor * fontSize;
     return math.max(
         scaledFontSize, math.max(iconStyle.iconSize, _kDenseButtonHeight));
@@ -1469,7 +1373,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     if (result == null) {
       // If there's no MediaQuery, then use the window aspect to determine
       // orientation.
-      final Size size = WidgetsBinding.instance.window.physicalSize;
+      final Size size = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
       result = size.width > size.height
           ? Orientation.landscape
           : Orientation.portrait;
@@ -1507,7 +1411,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
       items.add(DefaultTextStyle(
         style: _textStyle!.copyWith(color: Theme.of(context).hintColor),
         child: IgnorePointer(
-          ignoringSemantics: false,
+          ignoring: false,
           child: _DropdownMenuItemContainer(
             alignment: widget.alignment,
             child: displayedHint,
@@ -1616,10 +1520,10 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     }
 
     final MouseCursor effectiveMouseCursor =
-        MaterialStateProperty.resolveAs<MouseCursor>(
-      MaterialStateMouseCursor.clickable,
-      <MaterialState>{
-        if (!_enabled) MaterialState.disabled,
+        WidgetStateProperty.resolveAs<MouseCursor>(
+      WidgetStateMouseCursor.clickable,
+      <WidgetState>{
+        if (!_enabled) WidgetState.disabled,
       },
     );
 
@@ -1637,9 +1541,9 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
           focusColor: buttonStyle?.decoration?.color,
           overlayColor: buttonStyle?.overlayColor,
           enableFeedback: false,
-          child: result,
           borderRadius: buttonStyle?.decoration?.borderRadius
               ?.resolve(Directionality.of(context)),
+          child: result,
         ),
       ),
     );
@@ -1661,15 +1565,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
 ///  * [DropdownButton2], which is the underlying text field without the [Form]
 ///    integration.
 class DropdownButtonFormField2<T> extends FormField<T> {
-  /// Creates a [DropdownButton2] widget that is a [FormField], wrapped in an
-  /// [InputDecorator].
-  ///
-  /// For a description of the `onSaved`, `validator`, or `autovalidateMode`
-  /// parameters, see [FormField]. For the rest (other than [decoration]), see
-  /// [DropdownButton2].
-  ///
-  /// The `items`, `elevation`, `iconSize`, `isDense`, `isExpanded`,
-  /// `autofocus`, and `decoration`  parameters must not be null.
+
   DropdownButtonFormField2({
     super.key,
     this.dropdownButtonKey,
@@ -1688,7 +1584,7 @@ class DropdownButtonFormField2<T> extends FormField<T> {
     InputDecoration? decoration,
     super.onSaved,
     super.validator,
-    AutovalidateMode? autovalidateMode,
+    AutovalidateMode? autoValidateMode,
     bool? enableFeedback,
     AlignmentGeometry alignment = AlignmentDirectional.centerStart,
     ButtonStyleData? buttonStyleData,
@@ -1717,7 +1613,7 @@ class DropdownButtonFormField2<T> extends FormField<T> {
         decoration = getInputDecoration(decoration, buttonStyleData),
         super(
           initialValue: value,
-          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
+          autovalidateMode: autoValidateMode ?? AutovalidateMode.disabled,
           builder: (FormFieldState<T> field) {
             final _DropdownButtonFormFieldState<T> state =
                 field as _DropdownButtonFormFieldState<T>;
@@ -1824,9 +1720,9 @@ class DropdownButtonFormField2<T> extends FormField<T> {
     return decoration ??
         InputDecoration(
           focusColor:
-              buttonStyleData?.overlayColor?.resolve({MaterialState.focused}),
+              buttonStyleData?.overlayColor?.resolve({WidgetState.focused}),
           hoverColor:
-              buttonStyleData?.overlayColor?.resolve({MaterialState.hovered}),
+              buttonStyleData?.overlayColor?.resolve({WidgetState.hovered}),
         );
   }
 

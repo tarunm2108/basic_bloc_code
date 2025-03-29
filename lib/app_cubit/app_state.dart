@@ -11,9 +11,9 @@ class AppInitial extends AppState {
 
 }
 class AppLoaded extends AppState {
-  AppLoaded(Locale locale) : super(locale);
+  AppLoaded(super.locale);
 }
 
 class AppNoInternet extends AppState {
-  AppNoInternet(Locale locale) : super(locale);
+  AppNoInternet(super.locale);
 }

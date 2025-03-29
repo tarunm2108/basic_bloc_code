@@ -7,7 +7,7 @@ import 'package:basic_bloc_code/src/extensions/string_extension.dart';
 import 'package:basic_bloc_code/src/ui/splash/splash_view.dart';
 import 'package:basic_bloc_code/src/widgets/app_scaffold.dart';
 import 'package:basic_bloc_code/app_const/constants.dart';
-import 'package:basic_bloc_code/utils/navigation.dart';
+import 'package:basic_bloc_code/service/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localization/flutter_localization.dart';
@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                 primarySwatch: Colors.blue,
               ),
               routes: AppRoutes.routes,
-              navigatorKey: NavigationService.instance.navigatorKey,
+              navigatorKey: Navigation.instance.navigatorKey,
               supportedLocales: AppLocalizations.supportedLocales,
               localizationsDelegates: delegates,
               localeResolutionCallback: (currentLocal, supportedLocales) {
